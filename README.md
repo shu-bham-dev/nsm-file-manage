@@ -7,6 +7,13 @@ A full-stack file management system with a React (Vite) frontend and a Node.js (
 ├── 📁 nsm-file-manager-fe/   # Frontend (React + Vite)
 ├── 📁 nsm-file-manager-be/   # Backend (Node.js + Express)
 
+Screenshots
+![image](https://github.com/user-attachments/assets/0baad5ec-aa1a-4e8b-8312-f28872983fa6)
+![image](https://github.com/user-attachments/assets/d902aa7d-5cd4-4aec-987c-45fec1c48283)![image](https://github.com/user-attachments/assets/941619ac-8391-42a2-a08f-cef39e4a803e)
+![image](https://github.com/user-attachments/assets/d5951d07-2788-4566-99b7-128cc53ea084)
+![image](https://github.com/user-attachments/assets/38484445-df0f-4664-b6b2-495ac56ede0e)![image](https://github.com/user-attachments/assets/64565a73-3c63-4e97-8fa9-a75ba4f3eb80)
+
+
 
 
 ## 🏗️ Setup Instructions
