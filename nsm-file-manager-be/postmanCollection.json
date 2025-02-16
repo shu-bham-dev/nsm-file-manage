@@ -1,0 +1,243 @@
+{
+  "info": {
+    "_postman_id": "d9b8e55a-1234-5678-90ab-cdef12345678",
+    "name": "File Manager API Collection",
+    "description": "This collection contains sample requests for the File Manager backend APIs built with Node.js, Express, and MongoDB.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Upload File",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            },
+            {
+              "key": "parent",
+              "value": "",
+              "type": "text"
+            },
+            {
+              "key": "description",
+              "value": "A sample file upload",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/upload",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "upload"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Sample Upload File Response",
+          "originalRequest": {},
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"success\": true,\n  \"item\": {\n    \"_id\": \"60abc123def4567890abc123\",\n    \"name\": \"myfile.pdf\",\n    \"type\": \"file\",\n    \"fileUrl\": \"uploads/1622520000000-myfile.pdf\",\n    \"parent\": null,\n    \"description\": \"A sample file upload\",\n    \"createdAt\": \"2021-06-01T00:00:00.000Z\",\n    \"updatedAt\": \"2021-06-01T00:00:00.000Z\"\n  }\n}",
+          "header": []
+        }
+      ]
+    },
+    {
+      "name": "Create Folder",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Documents\",\n  \"description\": \"A sample folder\",\n  \"parent\": null\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/folder",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "folder"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Sample Create Folder Response",
+          "originalRequest": {},
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"success\": true,\n  \"folder\": {\n    \"_id\": \"60abc456def7890123abc456\",\n    \"name\": \"Documents\",\n    \"type\": \"folder\",\n    \"description\": \"A sample folder\",\n    \"parent\": null,\n    \"createdAt\": \"2021-06-01T00:00:00.000Z\",\n    \"updatedAt\": \"2021-06-01T00:00:00.000Z\"\n  }\n}",
+          "header": []
+        }
+      ]
+    },
+    {
+      "name": "Get Items (Paginated & Filtered)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/items?parent=&page=1&perPage=10&search=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "items"
+          ],
+          "query": [
+            {
+              "key": "parent",
+              "value": ""
+            },
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "perPage",
+              "value": "10"
+            },
+            {
+              "key": "search",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Sample Get Items Response",
+          "originalRequest": {},
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"items\": [\n    {\n      \"_id\": \"60abc123def4567890abc123\",\n      \"name\": \"myfile.pdf\",\n      \"type\": \"file\",\n      \"description\": \"A sample file upload\",\n      \"parent\": null,\n      \"createdAt\": \"2021-06-01T00:00:00.000Z\",\n      \"updatedAt\": \"2021-06-01T00:00:00.000Z\"\n    },\n    {\n      \"_id\": \"60abc456def7890123abc456\",\n      \"name\": \"Documents\",\n      \"type\": \"folder\",\n      \"description\": \"A sample folder\",\n      \"parent\": null,\n      \"createdAt\": \"2021-06-01T00:00:00.000Z\",\n      \"updatedAt\": \"2021-06-01T00:00:00.000Z\"\n    }\n  ],\n  \"total\": 2\n}",
+          "header": []
+        }
+      ]
+    },
+    {
+      "name": "Events (SSE)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/events",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "events"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Sample SSE Event",
+          "originalRequest": {},
+          "status": "OK",
+          "code": 200,
+          "body": "data: {\"type\":\"upload\",\"item\":{\"_id\":\"60abc123def4567890abc123\",\"name\":\"myfile.pdf\",\"type\":\"file\",\"description\":\"A sample file upload\",\"parent\":null,\"createdAt\":\"2021-06-01T00:00:00.000Z\",\"updatedAt\":\"2021-06-01T00:00:00.000Z\"}}\n\n",
+          "header": []
+        }
+      ]
+    },
+    {
+      "name": "Update Item",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Item Name\",\n  \"description\": \"Updated description for the item\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/items/{{itemId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "items",
+            "{{itemId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Update Item Response",
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"success\": true,\n  \"item\": {\n    \"_id\": \"60abc123def4567890abc123\",\n    \"name\": \"Updated Item Name\",\n    \"description\": \"Updated description for the item\",\n    \"type\": \"folder\",\n    \"createdAt\": \"2021-06-01T00:00:00.000Z\",\n    \"updatedAt\": \"2021-06-02T00:00:00.000Z\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Item",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/items/{{itemId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "items",
+            "{{itemId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete Item Response",
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"success\": true,\n  \"message\": \"Item deleted successfully\"\n}"
+        }
+      ]
+    }    
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Update Item",
+  "request": {
+    "method": "PUT",
+    "header": [
+      {
+        "key": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "body": {
+      "mode": "raw",
+      "raw": "{\n  \"name\": \"Updated Item Name\",\n  \"description\": \"Updated description for the item\"\n}"
+    },
+    "url": {
+      "raw": "http://localhost:5000/api/items/{{itemId}}",
+      "protocol": "http",
+      "host": [
+        "localhost"
+      ],
+      "port": "5000",
+      "path": [
+        "api",
+        "items",
+        "{{itemId}}"
+      ]
+    }
+  },
+  "response": [
+    {
+      "name": "Update Item Response",
+      "status": "OK",
+      "code": 200,
+      "body": "{\n  \"success\": true,\n  \"item\": {\n    \"_id\": \"60abc123def4567890abc123\",\n    \"name\": \"Updated Item Name\",\n    \"description\": \"Updated description for the item\",\n    \"type\": \"folder\",\n    \"createdAt\": \"2021-06-01T00:00:00.000Z\",\n    \"updatedAt\": \"2021-06-02T00:00:00.000Z\"\n  }\n}"
+    }
+  ]
+},
+{
+  "name": "Delete Item",
+  "request": {
+    "method": "DELETE",
+    "header": [],
+    "url": {
+      "raw": "http://localhost:5000/api/items/{{itemId}}",
+      "protocol": "http",
+      "host": [
+        "localhost"
+      ],
+      "port": "5000",
+      "path": [
+        "api",
+        "items",
+        "{{itemId}}"
+      ]
+    }
+  },
+  "response": [
+    {
+      "name": "Delete Item Response",
+      "status": "OK",
+      "code": 200,
+      "body": "{\n  \"success\": true,\n  \"message\": \"Item deleted successfully\"\n}"
+    }
+  ]
+}
