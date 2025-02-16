@@ -27,7 +27,7 @@ cd nsm-file-manager-be
 
 npm install
 
-🔧 Configure Environment Variables
+🔧 Configure Environment Variables ( I have added sample in the repo itself for convenience)
 ```sh
 Create a .env file in nsm-file-manager-be/ and add:
 PORT=5000
